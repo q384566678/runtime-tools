@@ -1,7 +1,6 @@
 {
 	"ImportPath": "github.com/opencontainers/runtime-tools",
 	"GoVersion": "go1.4",
-	"GodepVersion": "v75",
 	"Packages": [
 		"./..."
 	],
@@ -30,8 +29,8 @@
 		},
 		{
 			"ImportPath": "github.com/opencontainers/runtime-spec/specs-go",
-			"Comment": "v1.0.0-rc1-31-gbb6925e",
-			"Rev": "bb6925ea99f0e366a3f7d1c975f6577475ca25f0"
+			"Comment": "v1.0.0-rc4-54-gd87ec69",
+			"Rev": "d87ec6945fa5ff5c0553056c5510d46fe3490203"
 		},
 		{
 			"ImportPath": "github.com/syndtr/gocapability/capability",

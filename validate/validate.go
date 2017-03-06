@@ -243,10 +243,38 @@ func (v *Validator) CheckProcess() (msgs []string) {
 		}
 	}
 
-	for index := 0; index < len(process.Capabilities); index++ {
-		capability := process.Capabilities[index]
+	for index := 0; index < len(process.Capabilities.Bounding); index++ {
+		capability := process.Capabilities.Bounding[index]
 		if !capValid(capability) {
-			msgs = append(msgs, fmt.Sprintf("capability %q is not valid, man capabilities(7)", process.Capabilities[index]))
+			msgs = append(msgs, fmt.Sprintf("capability %q is not valid, man capabilities(7)", process.Capabilities.Bounding[index]))
+		}
+	}
+
+	for index := 0; index < len(process.Capabilities.Effective); index++ {
+		capability := process.Capabilities.Effective[index]
+		if !capValid(capability) {
+			msgs = append(msgs, fmt.Sprintf("capability %q is not valid, man capabilities(7)", process.Capabilities.Effective[index]))
+		}
+	}
+
+	for index := 0; index < len(process.Capabilities.Inheritable); index++ {
+		capability := process.Capabilities.Inheritable[index]
+		if !capValid(capability) {
+			msgs = append(msgs, fmt.Sprintf("capability %q is not valid, man capabilities(7)", process.Capabilities.Inheritable[index]))
+		}
+	}
+
+	for index := 0; index < len(process.Capabilities.Permitted); index++ {
+		capability := process.Capabilities.Permitted[index]
+		if !capValid(capability) {
+			msgs = append(msgs, fmt.Sprintf("capability %q is not valid, man capabilities(7)", process.Capabilities.Permitted[index]))
+		}
+	}
+
+	for index := 0; index < len(process.Capabilities.Ambient); index++ {
+		capability := process.Capabilities.Ambient[index]
+		if !capValid(capability) {
+			msgs = append(msgs, fmt.Sprintf("capability %q is not valid, man capabilities(7)", process.Capabilities.Ambient[index]))
 		}
 	}
 
@@ -517,7 +545,7 @@ func rlimitValid(rlimit string) bool {
 	return false
 }
 
-func namespaceValid(ns rspec.Namespace) bool {
+func namespaceValid(ns rspec.LinuxNamespace) bool {
 	switch ns.Type {
 	case rspec.PIDNamespace:
 	case rspec.NetworkNamespace:
@@ -532,7 +560,7 @@ func namespaceValid(ns rspec.Namespace) bool {
 	return true
 }
 
-func deviceValid(d rspec.Device) bool {
+func deviceValid(d rspec.LinuxDevice) bool {
 	switch d.Type {
 	case "b":
 	case "c":
@@ -553,7 +581,7 @@ func deviceValid(d rspec.Device) bool {
 	return true
 }
 
-func seccompActionValid(secc rspec.Action) bool {
+func seccompActionValid(secc rspec.LinuxSeccompAction) bool {
 	switch secc {
 	case "":
 	case rspec.ActKill:
@@ -567,7 +595,7 @@ func seccompActionValid(secc rspec.Action) bool {
 	return true
 }
 
-func syscallValid(s rspec.Syscall) bool {
+func syscallValid(s rspec.LinuxSyscall) bool {
 	if !seccompActionValid(s.Action) {
 		return false
 	}
