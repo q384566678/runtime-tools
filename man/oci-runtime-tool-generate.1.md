@@ -211,6 +211,17 @@ read the configuration from `config.json`.
 **--linux-realtime-runtime**=REALTIMERUNTIME
   Specifies a period of time in microseconds for the longest continuous period in which the tasks in a cgroup have access to CPU resources.
 
+**--linux-resources-device-add**=allow|deny[,type=TYPE][,major=MAJOR][,minor=MINOR][,access=ACCESS]
+  Add a device control rule.
+  allow|deny: whether the entry is allowed or denied.
+  TYPE: the device type. The value could be one of 'a' (all), 'b' (block), 'c' (character).
+  MAJOR/MINOR: the major/minor id of device.
+  ACCESS: cgroup permissions for device. A composition of r (read), w (write), and m (mknod).
+
+**--linux-resources-device-remove**=allow|deny[,type=TYPE][,major=MAJOR][,minor=MINOR][,access=ACCESS]
+  Remove a device control rule.
+  The arguments is same as *--linux-resources-device-add*.
+  
 **--linux-rootfs-propagation**=PROPOGATIONMODE
   Mount propagation for root filesystem.
   Values are "shared, rshared, private, rprivate, slave, rslave"

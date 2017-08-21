@@ -347,6 +347,8 @@ _oci-runtime-tool_generate() {
 		--linux-readonly-paths
 		--linux-realtime-period
 		--linux-realtime-runtime
+		--linux-resources-device-add
+		--linux-resources-device-remove
 		--linux-rootfs-propagation
 		--linux-seccomp-allow
 		--linux-seccomp-arch
