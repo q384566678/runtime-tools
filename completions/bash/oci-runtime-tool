@@ -175,7 +175,6 @@ __oci-runtime-tool_complete_seccomp_actions() {
 __oci-runtime-tool_complete_capabilities() {
 	# The list of capabilities is defined in types.go, ALL was added manually.
 	COMPREPLY=( $( compgen -W "
-		CAP_ALL
 		CAP_AUDIT_CONTROL
 		CAP_AUDIT_WRITE
 		CAP_AUDIT_READ
